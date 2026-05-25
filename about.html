@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About | CafeStand FourSeason</title>
+  <meta name="description" content="名水百選・池山水源のほとりに生まれたカフェスタンド。自然と水と珈琲へのこだわりをご紹介します。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Noto+Serif+JP:wght@300;400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <a href="index.html" class="logo">
+      <span class="logo-en">CafeStand FourSeason</span>
+      <span class="logo-jp">カフェスタンドフォーシーズン</span>
+    </a>
+    <nav class="site-nav" aria-label="メインナビゲーション">
+      <ul>
+        <li><a href="index.html">Top</a></li>
+        <li><a href="about.html" class="active">About</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="access.html">Access</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" aria-label="メニューを開く" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ページヒーロー -->
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="page-hero-en">About</div>
+      <div class="page-hero-jp">私たちについて</div>
+    </div>
+  </div>
+
+  <!-- ストーリー -->
+  <section class="story">
+    <div class="story-text">
+      <span class="section-label">Our Story</span>
+      <h2 class="section-title">池山水源のほとりで</h2>
+      <div class="divider"></div>
+      <p>
+        熊本県阿蘇郡産山村。その奥地に静かに湧き続ける池山水源は、環境省が選んだ「名水百選」のひとつです。
+        透き通った湧き水は、訪れた人々の心をすっと落ち着かせてくれます。
+      </p>
+      <p>
+        CafeStand FourSeasonは、その水源のすぐそばに生まれたカフェスタンドです。
+        ここでしか飲めない、池山水源の水だけで淹れたコーヒーを一杯。
+        水汲みや散策の後に、少し立ち止まって休んでいただける場所でありたいと思っています。
+      </p>
+      <p>
+        春・夏・秋・冬、四季それぞれに表情を変える産山村の自然。
+        そのすべての季節に寄り添えるよう、「FourSeason」と名付けました。
+      </p>
+    </div>
+    <div class="story-visual">
+      <!-- 実際の写真に差し替えてください -->
+      <div class="ph-img" data-label="Photo: 池山水源の風景" style="height:100%;"></div>
+    </div>
+  </section>
+
+  <!-- 写真ロー -->
+  <div class="about-photo-row" style="padding-top:0.5rem; padding-bottom:0.5rem;">
+    <div class="ph-img" data-label="Photo: 店舗外観"></div>
+    <div class="ph-img" data-label="Photo: コーヒー"></div>
+    <div class="ph-img" data-label="Photo: 水源の水"></div>
+  </div>
+
+  <!-- こだわり -->
+  <section class="section values">
+    <div class="section-inner">
+      <span class="section-label fade-in">Values</span>
+      <h2 class="section-title fade-in">私たちの大切にしていること</h2>
+      <div class="values-grid">
+        <div class="val-card active fade-in">
+          <div class="val-label">Water</div>
+          <h3 class="val-title">名水百選の湧き水</h3>
+          <p class="val-text">
+            池山水源の水は、地下深くからゆっくりとろ過された清らかな湧き水です。
+            その水だけを使ってコーヒーを淹れることで、豊かな風味と柔らかな口当たりが生まれます。
+            水の良さが、そのままコーヒーの美味しさになる。それが私たちの原点です。
+          </p>
+        </div>
+        <div class="val-card fade-in">
+          <div class="val-label">Nature</div>
+          <h3 class="val-title">産山村の自然</h3>
+          <p class="val-text">
+            阿蘇の山裾に広がる産山村は、空気も水も澄んでいます。
+            そんな豊かな自然の中で過ごすひとときは、日常の喧騒を忘れさせてくれます。
+            カップ一杯のコーヒーが、その体験をより深いものにしてくれると信じています。
+          </p>
+        </div>
+        <div class="val-card fade-in">
+          <div class="val-label">Comfort</div>
+          <h3 class="val-title">気軽に立ち寄れる場所</h3>
+          <p class="val-text">
+            難しいことは考えなくていい。ただ立ち寄って、一杯飲んで、また歩き出す。
+            そんな気軽さを大切にしています。
+            観光の途中でも、地元の方の日常のひとコマでも、どなたでもお気軽にどうぞ。
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 産山村について -->
+  <section class="section" style="background: var(--bg-warm);">
+    <div class="section-inner">
+      <div style="display:grid; grid-template-columns:1fr 1fr; gap:4rem; align-items:center;">
+        <div>
+          <span class="section-label fade-in">About Ubuyama</span>
+          <h2 class="section-title fade-in">産山村について</h2>
+          <div class="divider"></div>
+          <p class="section-lead fade-in">
+            産山村は熊本県阿蘇郡に位置する、人口約800人の小さな村です。
+            九州のほぼ中心に位置し、豊かな自然と清らかな水に恵まれています。<br><br>
+            池山水源はその象徴的な存在。毎分約30トンという豊富な湧水量を誇り、
+            地元住民の生活用水としても大切にされてきました。<br><br>
+            ここへ来ると、何かがリセットされる気がする。
+            そんな場所に、私たちのカフェスタンドがあります。
+          </p>
+        </div>
+        <div>
+          <!-- 実際の写真に差し替えてください -->
+          <div class="ph-img" data-label="Photo: 産山村の風景" style="height:360px;"></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo-en">CafeStand FourSeason</div>
+        <div class="footer-logo-jp">カフェスタンドフォーシーズン</div>
+        <p class="footer-tagline">
+          池山水源の清らかな水で淹れるコーヒー。<br>
+          熊本県産山村の大自然の中で、<br>
+          ホッと一息ついてください。
+        </p>
+      </div>
+      <nav class="footer-nav">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Top</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="access.html">Access</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer-info">
+        <h4>Info</h4>
+        <p>
+          〒869-2704<br>
+          熊本県阿蘇郡産山村田尻14-4<br>
+          TEL: 090-8959-9993<br><br>
+          火〜日 10:00〜16:00<br>
+          （木曜のみ 〜17:00）<br>
+          定休日：月曜日
+        </p>
+      </div>
+    </div>
+    <p class="footer-bottom">&copy; 2024 CafeStand FourSeason. All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

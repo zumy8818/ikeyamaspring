@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Menu | CafeStand FourSeason</title>
+  <meta name="description" content="池山水源の名水で淹れるコーヒーをはじめ、カフェオレ・かき氷（夏季）などのメニューをご紹介します。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Noto+Serif+JP:wght@300;400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <a href="index.html" class="logo">
+      <span class="logo-en">CafeStand FourSeason</span>
+      <span class="logo-jp">カフェスタンドフォーシーズン</span>
+    </a>
+    <nav class="site-nav" aria-label="メインナビゲーション">
+      <ul>
+        <li><a href="index.html">Top</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="menu.html" class="active">Menu</a></li>
+        <li><a href="access.html">Access</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" aria-label="メニューを開く" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ページヒーロー -->
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="page-hero-en">Menu</div>
+      <div class="page-hero-jp">メニュー</div>
+    </div>
+  </div>
+
+  <!-- メニュー本体 -->
+  <section class="section menu-main">
+    <div class="section-inner">
+
+      <p class="section-lead fade-in" style="margin-bottom:3.5rem;">
+        すべてのドリンクに、池山水源の名水を使用しています。<br>
+        自然の恵みをそのままカップに。ゆっくりとお楽しみください。
+      </p>
+
+      <!-- コーヒー -->
+      <div class="menu-category fade-in">
+        <h2 class="cat-title">
+          Coffee
+          <span class="cat-title-jp">珈琲</span>
+        </h2>
+        <ul class="menu-list">
+          <li class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">池山名水珈琲</div>
+              <div class="menu-item-note">Ikeyama Meisui Coffee — アイス</div>
+            </div>
+            <div class="menu-item-price">¥ 500</div>
+          </li>
+          <li class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">産山ブレンド珈琲</div>
+              <div class="menu-item-note">Ubuyama Blend Coffee — ホット</div>
+            </div>
+            <div class="menu-item-price">¥ 500</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- カフェドリンク -->
+      <div class="menu-category fade-in">
+        <h2 class="cat-title">
+          Café Drink
+          <span class="cat-title-jp">カフェドリンク</span>
+        </h2>
+        <ul class="menu-list">
+          <li class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">名水カフェオレ</div>
+              <div class="menu-item-note">Meisui Café au Lait</div>
+            </div>
+            <div class="menu-item-price">¥ 600</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- 季節限定 -->
+      <div class="menu-category fade-in">
+        <h2 class="cat-title">
+          Seasonal
+          <span class="cat-title-jp">季節限定</span>
+        </h2>
+        <ul class="menu-list">
+          <li class="menu-item">
+            <div class="menu-item-left">
+              <div class="menu-item-name">かき氷</div>
+              <div class="menu-item-note">Kakigori — 夏季限定（シロップは季節により変わります）</div>
+            </div>
+            <div class="menu-item-price">¥ 400〜</div>
+          </li>
+        </ul>
+      </div>
+
+      <!-- メニュー補足 -->
+      <div class="fade-in" style="margin-top:2.5rem; padding:2rem; background:var(--bg-warm); border-left:3px solid var(--green);">
+        <p style="font-size:0.83rem; color:var(--text-mid); line-height:2.2;">
+          ※ メニュー・価格は予告なく変更になる場合があります。<br>
+          ※ 季節限定メニューは時期により異なります。詳しくはSNSでご確認ください。<br>
+          ※ テイクアウトのみの営業です。
+        </p>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- オンラインストアCTA -->
+  <section class="online-store">
+    <span class="section-label">Online Store</span>
+    <h2 class="section-title">オンラインストア</h2>
+    <p class="section-lead">
+      産山村の自然と名水の味わいを、おうちでも。<br>
+      FourSeasonのコーヒー豆・グッズをオンラインでお届けします。
+    </p>
+    <a href="https://www.meisuimai.com/" target="_blank" rel="noopener" class="btn btn-white">オンラインストアへ</a>
+  </section>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo-en">CafeStand FourSeason</div>
+        <div class="footer-logo-jp">カフェスタンドフォーシーズン</div>
+        <p class="footer-tagline">
+          池山水源の清らかな水で淹れるコーヒー。<br>
+          熊本県産山村の大自然の中で、<br>
+          ホッと一息ついてください。
+        </p>
+      </div>
+      <nav class="footer-nav">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Top</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="access.html">Access</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer-info">
+        <h4>Info</h4>
+        <p>
+          〒869-2704<br>
+          熊本県阿蘇郡産山村田尻14-4<br>
+          TEL: 090-8959-9993<br><br>
+          火〜日 10:00〜16:00<br>
+          （木曜のみ 〜17:00）<br>
+          定休日：月曜日
+        </p>
+      </div>
+    </div>
+    <p class="footer-bottom">&copy; 2024 CafeStand FourSeason. All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

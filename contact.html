@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact | CafeStand FourSeason</title>
+  <meta name="description" content="CafeStand FourSeasonへのお問い合わせ。InstagramなどSNSでもお気軽にご連絡ください。">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;600&family=Noto+Serif+JP:wght@300;400&family=Noto+Sans+JP:wght@300;400&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+  <style>
+    .fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.7s ease, transform 0.7s ease; }
+    .fade-in.visible { opacity: 1; transform: translateY(0); }
+  </style>
+</head>
+<body>
+
+  <!-- ヘッダー -->
+  <header class="site-header">
+    <a href="index.html" class="logo">
+      <span class="logo-en">CafeStand FourSeason</span>
+      <span class="logo-jp">カフェスタンドフォーシーズン</span>
+    </a>
+    <nav class="site-nav" aria-label="メインナビゲーション">
+      <ul>
+        <li><a href="index.html">Top</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="menu.html">Menu</a></li>
+        <li><a href="access.html">Access</a></li>
+        <li><a href="contact.html" class="active">Contact</a></li>
+      </ul>
+    </nav>
+    <button class="nav-toggle" aria-label="メニューを開く" aria-expanded="false">
+      <span></span><span></span><span></span>
+    </button>
+  </header>
+
+  <!-- ページヒーロー -->
+  <div class="page-hero">
+    <div class="page-hero-content">
+      <div class="page-hero-en">Contact</div>
+      <div class="page-hero-jp">お問い合わせ</div>
+    </div>
+  </div>
+
+  <!-- コンタクト本体 -->
+  <section class="section contact-body">
+    <div class="section-inner">
+
+      <span class="section-label fade-in">Get in Touch</span>
+      <h2 class="section-title fade-in">お気軽にご連絡ください</h2>
+      <div class="divider"></div>
+      <p class="section-lead fade-in">
+        営業時間・メニューのご質問など、InstagramのDMまたはお電話でお気軽にどうぞ。<br>
+        フォームからもお問い合わせいただけます。
+      </p>
+
+      <div class="contact-grid" style="margin-top:3rem;">
+
+        <!-- SNS・電話 -->
+        <div>
+          <span class="section-label fade-in" style="margin-bottom:1.2rem; display:block;">SNS & Phone</span>
+
+          <ul class="sns-list fade-in">
+            <!-- InstagramのURLは実際のアカウントに差し替えてください -->
+            <li>
+              <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="sns-item">
+                <div class="sns-icon">IG</div>
+                <div>
+                  <div class="sns-name">Instagram</div>
+                  <div class="sns-desc">最新情報・営業日のお知らせはこちら</div>
+                </div>
+              </a>
+            </li>
+            <li>
+              <a href="tel:09089599993" class="sns-item">
+                <div class="sns-icon">TEL</div>
+                <div>
+                  <div class="sns-name">090-8959-9993</div>
+                  <div class="sns-desc">営業時間内にお電話ください</div>
+                </div>
+              </a>
+            </li>
+          </ul>
+
+          <div class="fade-in" style="margin-top:2rem; padding:1.5rem; background:var(--bg-warm); border-left:3px solid var(--green);">
+            <p style="font-size:0.82rem; color:var(--text-mid); line-height:2.1;">
+              <strong style="color:var(--text);">営業に関するお知らせ</strong><br>
+              天候や水源の状況によって、臨時休業となる場合があります。<br>
+              お越しの前にInstagramで最新情報をご確認いただくと安心です。
+            </p>
+          </div>
+        </div>
+
+        <!-- お問い合わせフォーム -->
+        <div>
+          <span class="section-label fade-in" style="margin-bottom:1.2rem; display:block;">Inquiry Form</span>
+          <form class="contact-form fade-in" id="contactForm" novalidate>
+            <div class="form-group">
+              <label class="form-label" for="name">お名前 <span style="color:var(--brown);">*</span></label>
+              <input class="form-input" type="text" id="name" name="name" placeholder="山田 太郎" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="email">メールアドレス <span style="color:var(--brown);">*</span></label>
+              <input class="form-input" type="email" id="email" name="email" placeholder="example@email.com" required>
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="subject">件名</label>
+              <input class="form-input" type="text" id="subject" name="subject" placeholder="メニューについて">
+            </div>
+            <div class="form-group">
+              <label class="form-label" for="message">メッセージ <span style="color:var(--brown);">*</span></label>
+              <textarea class="form-textarea" id="message" name="message" placeholder="お問い合わせ内容をご記入ください。" required></textarea>
+            </div>
+            <p class="form-note">
+              ※ 返信までに数日お時間をいただく場合があります。<br>
+              ※ フォームの送信にはバックエンド設定が必要です（FormSpree等のサービスと連携してください）。
+            </p>
+            <button type="submit" class="btn btn-primary" style="margin-top:0.5rem; width:100%; justify-content:center;">
+              送信する
+            </button>
+          </form>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- フッター -->
+  <footer class="site-footer">
+    <div class="footer-inner">
+      <div>
+        <div class="footer-logo-en">CafeStand FourSeason</div>
+        <div class="footer-logo-jp">カフェスタンドフォーシーズン</div>
+        <p class="footer-tagline">
+          池山水源の清らかな水で淹れるコーヒー。<br>
+          熊本県産山村の大自然の中で、<br>
+          ホッと一息ついてください。
+        </p>
+      </div>
+      <nav class="footer-nav">
+        <h4>Navigation</h4>
+        <ul>
+          <li><a href="index.html">Top</a></li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="menu.html">Menu</a></li>
+          <li><a href="access.html">Access</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+      <div class="footer-info">
+        <h4>Info</h4>
+        <p>
+          〒869-2704<br>
+          熊本県阿蘇郡産山村田尻14-4<br>
+          TEL: 090-8959-9993<br><br>
+          火〜日 10:00〜16:00<br>
+          （木曜のみ 〜17:00）<br>
+          定休日：月曜日
+        </p>
+      </div>
+    </div>
+    <p class="footer-bottom">&copy; 2024 CafeStand FourSeason. All rights reserved.</p>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
