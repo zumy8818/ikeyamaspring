@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>産山村 天気記録 — 田尻地区</title>
+<script src="https://cdn.jsdelivr.net/npm/chart.js@4"></script>
+<style>
+  :root {
+    --bg: #f0f4f8;
+    --card: #ffffff;
+    --primary: #2563eb;
+    --text: #1e293b;
+    --sub: #64748b;
+    --border: #e2e8f0;
+    --slot1: #1e3a5f;  /* 1時 深夜 */
+    --slot7: #f59e0b;  /* 7時 朝 */
+    --slot13: #ef4444; /* 13時 昼 */
+    --slot19: #8b5cf6; /* 19時 夕 */
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Hiragino Kaku Gothic ProN', sans-serif; background: var(--bg); color: var(--text); }
+
+  header {
+    background: var(--primary);
+    color: #fff;
+    padding: 16px 24px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-wrap: wrap;
+  }
+  header h1 { font-size: 1.1rem; font-weight: 700; flex: 1; }
+  .month-nav { display: flex; align-items: center; gap: 8px; }
+  .month-nav button {
+    background: rgba(255,255,255,0.2);
+    border: none; color: #fff;
+    width: 32px; height: 32px;
+    border-radius: 50%; cursor: pointer; font-size: 1rem;
+  }
+  .month-nav button:hover { background: rgba(255,255,255,0.35); }
+  #monthLabel { font-size: 1rem; font-weight: 600; min-width: 80px; text-align: center; }
+
+  main { padding: 16px; max-width: 1400px; margin: 0 auto; }
+
+  /* 凡例 */
+  .legend { display: none; } /* 時系列表示では不要 */
+
+  /* テーブル */
+  .table-wrap { overflow-x: auto; border-radius: 12px; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+  table { border-collapse: collapse; width: 100%; min-width: 700px; background: var(--card); }
+  th, td { border: 1px solid var(--border); padding: 8px 10px; text-align: center; font-size: 0.8rem; }
+  thead th { background: #f8fafc; font-weight: 600; color: var(--sub); position: sticky; top: 0; }
+  .slot-header { font-weight: 700; color: #fff; padding: 6px 10px; font-size: 0.82rem; }
+  .h1  { background: var(--slot1); }
+  .h7  { background: var(--slot7); }
+  .h13 { background: var(--slot13); }
+  .h19 { background: var(--slot19); }
+
+  .cell-icon  { font-size: 1.4rem; line-height: 1; }
+  .cell-temp  { font-size: 0.9rem; font-weight: 700; }
+  .cell-sub   { font-size: 0.7rem; color: var(--sub); margin-top: 2px; }
+  .cell-wind  { color: #0ea5e9; }
+  .cell-humid { color: #10b981; }
+  .cell-rain  { color: #6366f1; }
+  td.empty    { color: #cbd5e1; font-size: 0.75rem; }
+
+  /* グラフ */
+  .chart-section {
+    margin-top: 20px;
+    background: var(--card);
+    border-radius: 12px;
+    padding: 20px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.08);
+  }
+  .chart-section h2 { font-size: 0.9rem; color: var(--sub); margin-bottom: 12px; }
+  canvas { max-height: 260px; }
+
+  /* ローディング */
+  #loading { text-align: center; padding: 60px; color: var(--sub); font-size: 0.9rem; }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>🌤 産山村天気記録 — 田尻地区</h1>
+  <div class="month-nav">
+    <button id="prevMonth">&#8249;</button>
+    <span id="monthLabel"></span>
+    <button id="nextMonth">&#8250;</button>
+  </div>
+</header>
+
+<main>
+  <div class="legend">
+    <span><span class="dot" style="background:var(--slot1)"></span>1時（深夜）</span>
+    <span><span class="dot" style="background:var(--slot7)"></span>7時（朝）</span>
+    <span><span class="dot" style="background:var(--slot13)"></span>13時（昼）</span>
+    <span><span class="dot" style="background:var(--slot19)"></span>19時（夕）</span>
+  </div>
+
+  <div id="loading">データ読み込み中…</div>
+  <div id="content" style="display:none">
+    <div class="table-wrap">
+      <table id="weatherTable">
+        <thead id="tableHead"></thead>
+        <tbody id="tableBody"></tbody>
+      </table>
+    </div>
+    <div class="chart-section">
+      <h2>📈 気温推移（℃）</h2>
+      <canvas id="tempChart"></canvas>
+    </div>
+    <div class="chart-section">
+      <h2>🌧 降水量推移（mm）</h2>
+      <canvas id="rainChart"></canvas>
+    </div>
+  </div>
+</main>
+
+<script>
+const SLOTS = [1, 7, 13, 19];
+const SLOT_LABELS = { 1: '1時', 7: '7時', 13: '13時', 19: '19時' };
+const SLOT_COLORS = { 1: '#1e3a5f', 7: '#f59e0b', 13: '#ef4444', 19: '#8b5cf6' };
+const SLOT_CLASS  = { 1: 'h1',     7: 'h7',     13: 'h13',     19: 'h19' };
+
+// WMOコード → 天気アイコン
+function wmoIcon(code) {
+  if (code === 0)        return '☀️';
+  if (code <= 1)         return '🌤';
+  if (code <= 2)         return '⛅';
+  if (code === 3)        return '☁️';
+  if (code <= 48)        return '🌫';
+  if (code <= 57)        return '🌦';
+  if (code <= 67)        return '🌧';
+  if (code <= 77)        return '❄️';
+  if (code <= 82)        return '🌦';
+  if (code <= 86)        return '🌨';
+  if (code >= 95)        return '⛈';
+  return '🌡';
+}
+
+// 現在月の管理
+let currentYear, currentMonth;
+(function() {
+  const now = new Date();
+  currentYear  = now.getFullYear();
+  currentMonth = now.getMonth() + 1;
+})();
+
+let tempChart = null;
+let rainChart = null;
+
+document.getElementById('prevMonth').onclick = () => {
+  currentMonth--;
+  if (currentMonth < 1) { currentMonth = 12; currentYear--; }
+  loadData();
+};
+document.getElementById('nextMonth').onclick = () => {
+  currentMonth++;
+  if (currentMonth > 12) { currentMonth = 1; currentYear++; }
+  loadData();
+};
+
+async function loadData() {
+  const monthStr = `${currentYear}-${String(currentMonth).padStart(2,'0')}`;
+  document.getElementById('monthLabel').textContent = `${currentYear}年${currentMonth}月`;
+  document.getElementById('loading').style.display = 'block';
+  document.getElementById('content').style.display  = 'none';
+
+  const res  = await fetch(`https://ubuyama-digital-service.com/weather-api/api.php?month=${monthStr}`);
+  const json = await res.json();
+  render(json.data || {}, currentYear, currentMonth);
+
+  document.getElementById('loading').style.display = 'none';
+  document.getElementById('content').style.display  = 'block';
+}
+
+function daysInMonth(y, m) {
+  return new Date(y, m, 0).getDate();
+}
+
+function render(data, year, month) {
+  const days = daysInMonth(year, month);
+  const dateList = [];
+  for (let d = 1; d <= days; d++) {
+    dateList.push(`${year}-${String(month).padStart(2,'0')}-${String(d).padStart(2,'0')}`);
+  }
+
+  // ── 時系列リスト（横軸）: 6/1 1時, 6/1 7時, ..., 6/30 19時
+  const timeline = [];
+  dateList.forEach(date => {
+    SLOTS.forEach(slot => timeline.push({ date, slot }));
+  });
+
+  // ── ヘッダー（日付+時刻）
+  const thead = document.getElementById('tableHead');
+  thead.innerHTML = '';
+
+  // 1行目：日付（colspan=4でまとめる）
+  const dateRow = document.createElement('tr');
+  dateRow.innerHTML = '<th rowspan="2" style="min-width:60px">項目</th>';
+  dateList.forEach(date => {
+    const d   = parseInt(date.split('-')[2]);
+    const dow = ['日','月','火','水','木','金','土'][new Date(date).getDay()];
+    const dowColor = new Date(date).getDay() === 0 ? '#ef4444'
+                   : new Date(date).getDay() === 6 ? '#2563eb' : 'inherit';
+    dateRow.innerHTML += `<th colspan="4" style="border-bottom:none;color:${dowColor}">${month}/${d}<span style="font-size:0.7rem;margin-left:3px">${dow}</span></th>`;
+  });
+  thead.appendChild(dateRow);
+
+  // 2行目：時刻
+  const timeRow = document.createElement('tr');
+  dateList.forEach(() => {
+    SLOTS.forEach(slot => {
+      timeRow.innerHTML += `<th class="slot-header ${SLOT_CLASS[slot]}" style="font-size:0.7rem;padding:4px 2px">${SLOT_LABELS[slot]}</th>`;
+    });
+  });
+  thead.appendChild(timeRow);
+
+  // ── ボディ（項目 × 時系列）
+  const tbody = document.getElementById('tableBody');
+  tbody.innerHTML = '';
+
+  const rows = [
+    { key: 'icon',    label: '天気' },
+    { key: 'temp',    label: '気温' },
+    { key: 'wind',    label: '風速' },
+    { key: 'humid',   label: '湿度' },
+    { key: 'precip',  label: '降水' },
+  ];
+
+  rows.forEach(({ key, label }) => {
+    const tr = document.createElement('tr');
+    tr.innerHTML = `<td style="font-weight:600;font-size:0.78rem;white-space:nowrap;background:#f8fafc">${label}</td>`;
+    timeline.forEach(({ date, slot }) => {
+      const e = data[date]?.[slot];
+      if (!e) { tr.innerHTML += `<td class="empty">—</td>`; return; }
+      let cell = '';
+      if (key === 'icon')   cell = `<span style="font-size:1.3rem">${wmoIcon(e.weather_code)}</span>`;
+      if (key === 'temp')   cell = `<span class="cell-temp">${e.temperature}℃</span>`;
+      if (key === 'wind')   cell = `<span class="cell-sub cell-wind">${e.wind_speed}<small>m/s</small></span>`;
+      if (key === 'humid')  cell = `<span class="cell-sub cell-humid">${e.humidity}<small>%</small></span>`;
+      if (key === 'precip') cell = e.precipitation > 0
+        ? `<span class="cell-sub cell-rain" style="font-weight:700">${e.precipitation}<small>mm</small></span>`
+        : `<span style="color:#cbd5e1;font-size:0.7rem">0</span>`;
+      tr.innerHTML += `<td style="padding:5px 4px">${cell}</td>`;
+    });
+    tbody.appendChild(tr);
+  });
+
+  // ── 気温折れ線グラフ（横軸: 日時）
+  const chartLabels = timeline.map(({ date, slot }) => {
+    const d = parseInt(date.split('-')[2]);
+    return slot === 1 ? `${month}/${d}` : `${slot}時`;  // 日付は1時のみ表示
+  });
+  const tempValues = timeline.map(({ date, slot }) => data[date]?.[slot]?.temperature ?? null);
+
+  if (tempChart) tempChart.destroy();
+  tempChart = new Chart(document.getElementById('tempChart'), {
+    type: 'line',
+    data: {
+      labels: chartLabels,
+      datasets: [{
+        label: '気温（℃）',
+        data: tempValues,
+        borderColor: '#ef4444',
+        backgroundColor: 'rgba(239,68,68,0.08)',
+        tension: 0.3,
+        spanGaps: true,
+        pointRadius: 2,
+        pointHoverRadius: 5,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { ticks: { maxRotation: 0, font: { size: 10 } } },
+        y: { title: { display: true, text: '℃' } }
+      }
+    }
+  });
+
+  // ── 降水量グラフ（横軸: 日時）
+  const rainValues = timeline.map(({ date, slot }) => data[date]?.[slot]?.precipitation ?? null);
+
+  if (rainChart) rainChart.destroy();
+  rainChart = new Chart(document.getElementById('rainChart'), {
+    type: 'bar',
+    data: {
+      labels: chartLabels,
+      datasets: [{
+        label: '降水量（mm）',
+        data: rainValues,
+        backgroundColor: 'rgba(99,102,241,0.7)',
+        borderColor: '#6366f1',
+        borderWidth: 1,
+      }]
+    },
+    options: {
+      responsive: true,
+      plugins: { legend: { display: false } },
+      scales: {
+        x: { ticks: { maxRotation: 0, font: { size: 10 } } },
+        y: { title: { display: true, text: 'mm' }, min: 0 }
+      }
+    }
+  });
+}
+
+// 初回ロード
+loadData();
+</script>
+</body>
+</html>
