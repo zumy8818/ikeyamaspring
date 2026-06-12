@@ -112,6 +112,14 @@
       <canvas id="tempChart"></canvas>
     </div>
     <div class="chart-section">
+      <h2>💨 風速推移（m/s）</h2>
+      <canvas id="windChart"></canvas>
+    </div>
+    <div class="chart-section">
+      <h2>💧 湿度推移（%）</h2>
+      <canvas id="humidChart"></canvas>
+    </div>
+    <div class="chart-section">
       <h2>🌧 降水量推移（mm）</h2>
       <canvas id="rainChart"></canvas>
     </div>
@@ -256,43 +264,68 @@ function render(data, year, month) {
   });
   const tempValues = timeline.map(({ date, slot }) => data[date]?.[slot]?.temperature ?? null);
 
-  if (tempChart) tempChart.destroy();
-  tempChart = new Chart(document.getElementById('tempChart'), {
-    type: 'line',
-    data: {
-      labels: chartLabels,
-      datasets: [{
-        label: '気温（℃）',
-        data: tempValues,
-        borderColor: '#ef4444',
-        backgroundColor: 'rgba(239,68,68,0.08)',
-        tension: 0.3,
-        spanGaps: true,
-        pointRadius: 2,
-        pointHoverRadius: 5,
-      }]
-    },
-    options: {
-      responsive: true,
-      plugins: { legend: { display: false } },
-      scales: {
-        x: { ticks: { maxRotation: 0, font: { size: 10 } } },
-        y: { title: { display: true, text: '℃' } }
+  // 共通オプション
+  const xAxis = { ticks: { maxRotation: 0, font: { size: 10 } } };
+
+  function makeLineChart(id, values, color, yLabel, yMin, yMax) {
+    const existing = Chart.getChart(id);
+    if (existing) existing.destroy();
+    return new Chart(document.getElementById(id), {
+      type: 'line',
+      data: {
+        labels: chartLabels,
+        datasets: [{
+          data: values,
+          borderColor: color,
+          backgroundColor: color + '15',
+          tension: 0.3,
+          spanGaps: true,
+          pointRadius: 2,
+          pointHoverRadius: 5,
+        }]
+      },
+      options: {
+        responsive: true,
+        plugins: { legend: { display: false } },
+        scales: {
+          x: xAxis,
+          y: {
+            title: { display: true, text: yLabel },
+            ...(yMin !== null ? { min: yMin } : {}),
+            ...(yMax !== null ? { max: yMax } : {}),
+          }
+        }
       }
-    }
-  });
+    });
+  }
 
-  // ── 降水量グラフ（横軸: 日時）
-  const rainValues = timeline.map(({ date, slot }) => data[date]?.[slot]?.precipitation ?? null);
+  // 気温（固定レンジ -10〜40℃）
+  makeLineChart('tempChart',
+    timeline.map(({ date, slot }) => data[date]?.[slot]?.temperature ?? null),
+    '#ef4444', '℃', -10, 40
+  );
 
-  if (rainChart) rainChart.destroy();
-  rainChart = new Chart(document.getElementById('rainChart'), {
+  // 風速
+  makeLineChart('windChart',
+    timeline.map(({ date, slot }) => data[date]?.[slot]?.wind_speed ?? null),
+    '#0ea5e9', 'm/s', 0, null
+  );
+
+  // 湿度
+  makeLineChart('humidChart',
+    timeline.map(({ date, slot }) => data[date]?.[slot]?.humidity ?? null),
+    '#10b981', '%', 0, 100
+  );
+
+  // 降水量（縦棒グラフ）
+  const existing = Chart.getChart('rainChart');
+  if (existing) existing.destroy();
+  new Chart(document.getElementById('rainChart'), {
     type: 'bar',
     data: {
       labels: chartLabels,
       datasets: [{
-        label: '降水量（mm）',
-        data: rainValues,
+        data: timeline.map(({ date, slot }) => data[date]?.[slot]?.precipitation ?? null),
         backgroundColor: 'rgba(99,102,241,0.7)',
         borderColor: '#6366f1',
         borderWidth: 1,
@@ -302,7 +335,7 @@ function render(data, year, month) {
       responsive: true,
       plugins: { legend: { display: false } },
       scales: {
-        x: { ticks: { maxRotation: 0, font: { size: 10 } } },
+        x: xAxis,
         y: { title: { display: true, text: 'mm' }, min: 0 }
       }
     }
