@@ -159,6 +159,27 @@ let currentYear, currentMonth;
 let tempChart = null;
 let rainChart = null;
 
+function scrollToToday() {
+  const now = new Date();
+  const isCurrentMonth = (now.getFullYear() === currentYear && now.getMonth() + 1 === currentMonth);
+  if (!isCurrentMonth) return;
+
+  const todayStr = `${now.getFullYear()}-${String(now.getMonth()+1).padStart(2,'0')}-${String(now.getDate()).padStart(2,'0')}`;
+  // thead の2行目（時刻行）の最初のセルでtodayを探す
+  const allTh = document.querySelectorAll('#tableHead tr:first-child th');
+  let targetTh = null;
+  allTh.forEach(th => {
+    if (th.dataset.date === todayStr) targetTh = th;
+  });
+  if (!targetTh) return;
+
+  const wrap = document.querySelector('.table-wrap');
+  const thLeft = targetTh.offsetLeft;
+  const wrapWidth = wrap.clientWidth;
+  // 今日列をなるべく中央に
+  wrap.scrollLeft = thLeft - wrapWidth / 2 + targetTh.offsetWidth * 2;
+}
+
 document.getElementById('prevMonth').onclick = () => {
   currentMonth--;
   if (currentMonth < 1) { currentMonth = 12; currentYear--; }
@@ -182,6 +203,9 @@ async function loadData() {
 
   document.getElementById('loading').style.display = 'none';
   document.getElementById('content').style.display  = 'block';
+
+  // 今日の列に自動スクロール
+  scrollToToday();
 }
 
 function daysInMonth(y, m) {
@@ -213,7 +237,7 @@ function render(data, year, month) {
     const dow = ['日','月','火','水','木','金','土'][new Date(date).getDay()];
     const dowColor = new Date(date).getDay() === 0 ? '#ef4444'
                    : new Date(date).getDay() === 6 ? '#2563eb' : 'inherit';
-    dateRow.innerHTML += `<th colspan="4" style="border-bottom:none;color:${dowColor}">${month}/${d}<span style="font-size:0.7rem;margin-left:3px">${dow}</span></th>`;
+    dateRow.innerHTML += `<th colspan="4" data-date="${date}" style="border-bottom:none;color:${dowColor}">${month}/${d}<span style="font-size:0.7rem;margin-left:3px">${dow}</span></th>`;
   });
   thead.appendChild(dateRow);
 
