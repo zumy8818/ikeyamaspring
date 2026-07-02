@@ -39,13 +39,26 @@
     /* ナビ */
     nav {
       position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
-      background: rgba(250,247,242,0.94);
+      background: rgba(250,247,242,0.96);
       backdrop-filter: blur(6px);
       border-bottom: 1px solid var(--line);
       display: flex; align-items: center; justify-content: space-between;
-      padding: 14px 28px;
+      padding: 8px 24px;
     }
-    .nav-logo { font-family: 'Shippori Mincho', serif; font-size: 16px; color: var(--brown); letter-spacing: 2px; }
+    .nav-brand {
+      display: flex; align-items: center; gap: 10px;
+    }
+    .nav-brand img {
+      width: 52px; height: 52px;
+      object-fit: contain; display: block;
+    }
+    .nav-logo {
+      font-family: 'Shippori Mincho', serif;
+      font-size: 20px; font-weight: 700;
+      color: var(--brown); letter-spacing: 1px;
+      line-height: 1.2;
+    }
+    .nav-logo span { display: block; }
     .nav-tel  { font-size: 13px; font-weight: 700; color: var(--green); }
 
     /* ヒーロー */
@@ -175,7 +188,13 @@
 
 <!-- ナビ -->
 <nav>
-  <span class="nav-logo">Four Seasons</span>
+  <div class="nav-brand">
+    <img src="../images/ChatGPT Image 2026.5.20.png" alt="CafeStand FourSeason ロゴ">
+    <div class="nav-logo">
+      <span>CafeStand</span>
+      <span>FourSeason</span>
+    </div>
+  </div>
   <span class="nav-tel"><a href="tel:09089599993">☎ 090-8959-9993</a></span>
 </nav>
 
