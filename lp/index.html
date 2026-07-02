@@ -1,0 +1,501 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>カフェスタンド フォーシーズン | 阿蘇・産山村のカフェ</title>
+  <meta name="description" content="阿蘇・産山村の自然に囲まれたカフェスタンド。季節のドリンクと手作りスイーツで、あなたの「今」を彩ります。">
+  <!-- OGP -->
+  <meta property="og:title" content="カフェスタンド フォーシーズン">
+  <meta property="og:description" content="阿蘇・産山村の自然に囲まれたカフェスタンド。季節のドリンクと手作りスイーツ。">
+  <meta property="og:image" content="https://ikeyamaspring.jp/lp/ogp.jpg">
+  <meta property="og:url" content="https://ikeyamaspring.jp/lp/">
+  <meta property="og:type" content="website">
+  <link rel="canonical" href="https://ikeyamaspring.jp/lp/">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Playfair+Display:ital,wght@0,700;1,400&display=swap" rel="stylesheet">
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --green:  #3a7d44;
+      --green-light: #e8f5e9;
+      --brown:  #6d4c2a;
+      --cream:  #fdf8f2;
+      --text:   #2c2c2c;
+      --gray:   #666;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: 'Noto Sans JP', sans-serif;
+      color: var(--text);
+      background: var(--cream);
+      line-height: 1.7;
+    }
+
+    img { display: block; width: 100%; }
+    a { text-decoration: none; color: inherit; }
+
+    /* ===== ナビ ===== */
+    nav {
+      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
+      background: rgba(253,248,242,0.92);
+      backdrop-filter: blur(8px);
+      border-bottom: 1px solid rgba(109,76,42,0.15);
+      padding: 12px 24px;
+      display: flex; align-items: center; justify-content: space-between;
+    }
+    .nav-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      color: var(--brown);
+      letter-spacing: 1px;
+    }
+    .nav-links { display: flex; gap: 24px; font-size: 13px; color: var(--gray); }
+    .nav-links a:hover { color: var(--green); }
+
+    /* ===== ヒーロー ===== */
+    .hero {
+      position: relative;
+      height: 100svh;
+      min-height: 560px;
+      overflow: hidden;
+    }
+    .hero img {
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      object-position: center;
+    }
+    .hero-overlay {
+      position: absolute; inset: 0;
+      background: linear-gradient(
+        to bottom,
+        rgba(0,0,0,0.1) 0%,
+        rgba(0,0,0,0.35) 60%,
+        rgba(0,0,0,0.55) 100%
+      );
+    }
+    .hero-content {
+      position: absolute; bottom: 0; left: 0; right: 0;
+      padding: 40px 32px 60px;
+      color: white;
+    }
+    .hero-tag {
+      display: inline-block;
+      background: var(--green);
+      color: white;
+      font-size: 11px;
+      letter-spacing: 2px;
+      padding: 4px 14px;
+      border-radius: 20px;
+      margin-bottom: 14px;
+    }
+    .hero-content h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(28px, 7vw, 52px);
+      line-height: 1.2;
+      margin-bottom: 12px;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.4);
+    }
+    .hero-content h1 em {
+      font-style: italic;
+      color: #d4edda;
+    }
+    .hero-content p {
+      font-size: 14px;
+      opacity: 0.9;
+      margin-bottom: 28px;
+      max-width: 400px;
+    }
+    .hero-cta {
+      display: inline-block;
+      background: white;
+      color: var(--brown);
+      font-size: 14px;
+      font-weight: 700;
+      padding: 14px 32px;
+      border-radius: 50px;
+      letter-spacing: 1px;
+      box-shadow: 0 4px 16px rgba(0,0,0,0.2);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .hero-cta:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.3); }
+
+    /* ===== セクション共通 ===== */
+    section { padding: 64px 24px; }
+    .section-label {
+      font-size: 11px;
+      letter-spacing: 3px;
+      color: var(--green);
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+    .section-title {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(22px, 5vw, 34px);
+      color: var(--brown);
+      margin-bottom: 16px;
+      line-height: 1.3;
+    }
+    .section-desc {
+      font-size: 14px;
+      color: var(--gray);
+      max-width: 520px;
+      margin: 0 auto 40px;
+    }
+    .inner { max-width: 860px; margin: 0 auto; }
+    .text-center { text-align: center; }
+
+    /* ===== こだわり ===== */
+    .features { background: white; }
+    .feature-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .feature-card {
+      background: var(--cream);
+      border-radius: 16px;
+      padding: 28px 20px;
+      text-align: center;
+      border: 1px solid rgba(109,76,42,0.1);
+    }
+    .feature-icon { font-size: 38px; margin-bottom: 12px; }
+    .feature-card h3 { font-size: 15px; font-weight: 700; color: var(--brown); margin-bottom: 8px; }
+    .feature-card p { font-size: 13px; color: var(--gray); line-height: 1.7; }
+
+    /* ===== メニュー ===== */
+    .menu-section { background: var(--green-light); }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+      gap: 20px;
+      margin-top: 40px;
+    }
+    .menu-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 2px 12px rgba(0,0,0,0.06);
+    }
+    .menu-card-img {
+      height: 200px;
+      overflow: hidden;
+    }
+    .menu-card-img img {
+      height: 100%;
+      object-fit: cover;
+      transition: transform 0.4s;
+    }
+    .menu-card:hover .menu-card-img img { transform: scale(1.05); }
+    .menu-card-body { padding: 16px 18px 20px; }
+    .menu-card-body h3 { font-size: 15px; font-weight: 700; color: var(--brown); margin-bottom: 4px; }
+    .menu-card-body p { font-size: 12px; color: var(--gray); }
+    .menu-tag {
+      display: inline-block;
+      background: var(--green);
+      color: white;
+      font-size: 10px;
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin-bottom: 6px;
+    }
+
+    /* ===== 季節 ===== */
+    .seasons { background: white; }
+    .season-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 16px;
+      margin-top: 40px;
+    }
+    .season-card {
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+    }
+    .season-card.spring { background: #fff0f5; }
+    .season-card.summer { background: #e8f5e9; }
+    .season-card.autumn { background: #fff8e1; }
+    .season-card.winter { background: #e3f2fd; }
+    .season-emoji { font-size: 32px; margin-bottom: 8px; }
+    .season-card h3 { font-size: 14px; font-weight: 700; margin-bottom: 4px; }
+    .season-card p { font-size: 12px; color: var(--gray); }
+
+    /* ===== 店舗情報 ===== */
+    .info-section { background: var(--cream); }
+    .info-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 40px;
+    }
+    @media (max-width: 600px) { .info-grid { grid-template-columns: 1fr; } }
+    .info-table { width: 100%; border-collapse: collapse; font-size: 14px; }
+    .info-table tr { border-bottom: 1px solid rgba(109,76,42,0.1); }
+    .info-table th {
+      text-align: left; padding: 12px 8px 12px 0;
+      color: var(--brown); font-weight: 700; width: 100px;
+      vertical-align: top;
+    }
+    .info-table td { padding: 12px 0; color: var(--text); }
+    .map-placeholder {
+      background: #e0e0e0;
+      border-radius: 12px;
+      height: 220px;
+      display: flex; align-items: center; justify-content: center;
+      color: var(--gray);
+      font-size: 13px;
+      overflow: hidden;
+    }
+    .map-placeholder iframe { border: 0; width: 100%; height: 100%; }
+
+    /* ===== CTA ===== */
+    .cta-section {
+      background: linear-gradient(135deg, var(--green) 0%, #2e6b36 100%);
+      color: white;
+      text-align: center;
+      padding: 64px 24px;
+    }
+    .cta-section .section-label { color: rgba(255,255,255,0.7); }
+    .cta-section .section-title { color: white; }
+    .cta-section p { color: rgba(255,255,255,0.85); max-width: 400px; margin: 0 auto 32px; font-size: 14px; }
+    .cta-buttons { display: flex; gap: 14px; justify-content: center; flex-wrap: wrap; }
+    .cta-btn {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 14px 28px; border-radius: 50px;
+      font-size: 14px; font-weight: 700; letter-spacing: 0.5px;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 20px rgba(0,0,0,0.25); }
+    .cta-btn.primary { background: white; color: var(--green); }
+    .cta-btn.secondary { background: rgba(255,255,255,0.15); color: white; border: 1.5px solid rgba(255,255,255,0.5); }
+    .cta-btn.instagram { background: linear-gradient(135deg, #f09433, #e6683c, #dc2743, #cc2366); color: white; }
+
+    /* ===== フッター ===== */
+    footer {
+      background: var(--brown);
+      color: rgba(255,255,255,0.8);
+      text-align: center;
+      padding: 32px 24px;
+      font-size: 12px;
+    }
+    footer .footer-logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 20px;
+      color: white;
+      margin-bottom: 8px;
+    }
+    footer a { color: rgba(255,255,255,0.7); }
+
+    /* ===== レスポンシブ ===== */
+    @media (max-width: 640px) {
+      nav { padding: 10px 16px; }
+      .nav-links { display: none; }
+      .hero-content { padding: 32px 20px 52px; }
+      section { padding: 48px 16px; }
+      .season-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ナビ -->
+<nav>
+  <div class="nav-logo">Four Seasons</div>
+  <div class="nav-links">
+    <a href="#menu">メニュー</a>
+    <a href="#info">店舗情報</a>
+    <a href="#contact">アクセス</a>
+  </div>
+</nav>
+
+<!-- ヒーロー -->
+<section class="hero">
+  <img src="../images/hero/hero-main.jpg" alt="カフェスタンド フォーシーズン 外観">
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <div class="hero-tag">Cafe Stand · Ubuyama · Aso</div>
+    <h1>四季の恵みを、<br><em>一杯に。</em></h1>
+    <p>阿蘇・産山の自然に囲まれた小さなカフェスタンド。<br>季節ごとに変わるドリンクとスイーツで、あなたの「今」をちょっと豊かに。</p>
+    <a href="#menu" class="hero-cta">メニューを見る</a>
+  </div>
+</section>
+
+<!-- こだわり -->
+<section class="features" id="features">
+  <div class="inner text-center">
+    <div class="section-label">Our Story</div>
+    <h2 class="section-title">フォーシーズンの<br>こだわり</h2>
+    <p class="section-desc">産山村の豊かな自然と地元の食材を大切にした、小さくても本物のカフェです。</p>
+    <div class="feature-grid">
+      <div class="feature-card">
+        <div class="feature-icon">🌿</div>
+        <h3>地元素材にこだわる</h3>
+        <p>産山村・阿蘇の新鮮な野菜・果物・乳製品を使ったドリンクとスイーツをご提供します。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">🍃</div>
+        <h3>季節を感じるメニュー</h3>
+        <p>春・夏・秋・冬、それぞれの旬を活かしたメニューを季節ごとに更新しています。</p>
+      </div>
+      <div class="feature-card">
+        <div class="feature-icon">☕</div>
+        <h3>ゆっくりできる空間</h3>
+        <p>阿蘇の緑を眺めながら、ゆったりと過ごせる癒しのスペースをご用意しています。</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- メニュー -->
+<section class="menu-section" id="menu">
+  <div class="inner text-center">
+    <div class="section-label">Menu</div>
+    <h2 class="section-title">人気メニュー</h2>
+    <p class="section-desc">季節のおすすめをピックアップしました。メニューは時期によって変わります。</p>
+    <div class="menu-grid">
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="../images/menu/ice-coffee.jpg" alt="アイスコーヒー">
+        </div>
+        <div class="menu-card-body">
+          <span class="menu-tag">定番</span>
+          <h3>産山アイスコーヒー</h3>
+          <p>深煎りコーヒーを阿蘇の清水で仕上げた、すっきりとした一杯。</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="../images/menu/jelly.jpg" alt="ジェリードリンク">
+        </div>
+        <div class="menu-card-body">
+          <span class="menu-tag">季節限定</span>
+          <h3>フルーツジェリードリンク</h3>
+          <p>旬のフルーツをたっぷり使ったジェリー入りドリンク。インスタ映えも抜群。</p>
+        </div>
+      </div>
+      <div class="menu-card">
+        <div class="menu-card-img">
+          <img src="../images/menu/original-drink.jpg" alt="オリジナルドリンク">
+        </div>
+        <div class="menu-card-body">
+          <span class="menu-tag">オリジナル</span>
+          <h3>フォーシーズン スペシャル</h3>
+          <p>季節の素材を組み合わせた、ここだけのオリジナルドリンク。</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 四季 -->
+<section class="seasons">
+  <div class="inner text-center">
+    <div class="section-label">Four Seasons</div>
+    <h2 class="section-title">一年中、楽しめます</h2>
+    <p class="section-desc">季節ごとの産山村の魅力と合わせて、ぜひ足をお運びください。</p>
+    <div class="season-grid">
+      <div class="season-card spring">
+        <div class="season-emoji">🌸</div>
+        <h3>春 Spring</h3>
+        <p>桜・いちご・よもぎの季節ドリンク</p>
+      </div>
+      <div class="season-card summer">
+        <div class="season-emoji">🌿</div>
+        <h3>夏 Summer</h3>
+        <p>阿蘇の清水を活かした爽やかドリンク</p>
+      </div>
+      <div class="season-card autumn">
+        <div class="season-emoji">🍂</div>
+        <h3>秋 Autumn</h3>
+        <p>栗・さつまいも・柿のスイーツ</p>
+      </div>
+      <div class="season-card winter">
+        <div class="season-emoji">❄️</div>
+        <h3>冬 Winter</h3>
+        <p>温かいホットドリンクと手作りケーキ</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- 店舗情報 -->
+<section class="info-section" id="info">
+  <div class="inner">
+    <div class="text-center">
+      <div class="section-label">Information</div>
+      <h2 class="section-title">店舗情報</h2>
+    </div>
+    <div class="info-grid">
+      <table class="info-table">
+        <tr>
+          <th>店舗名</th>
+          <td>カフェスタンド フォーシーズン</td>
+        </tr>
+        <tr>
+          <th>住所</th>
+          <td>熊本県阿蘇郡産山村<br>（詳細住所を入力）</td>
+        </tr>
+        <tr>
+          <th>電話</th>
+          <td><a href="tel:090-xxxx-xxxx">090-XXXX-XXXX</a></td>
+        </tr>
+        <tr>
+          <th>営業時間</th>
+          <td>10:00 〜 17:00</td>
+        </tr>
+        <tr>
+          <th>定休日</th>
+          <td>火・水曜日</td>
+        </tr>
+        <tr>
+          <th>駐車場</th>
+          <td>あり（〇台）</td>
+        </tr>
+      </table>
+      <div class="map-placeholder">
+        <!-- Googleマップ埋め込みコード（本番時に差し替え） -->
+        <iframe
+          src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3313.2!2d131.145!3d33.05!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z!5e0!3m2!1sja!2sjp!4v1"
+          allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CTA -->
+<section class="cta-section" id="contact">
+  <div class="section-label">Follow & Visit</div>
+  <h2 class="section-title">お気軽にどうぞ</h2>
+  <p>最新メニューやお知らせはInstagramで毎日更新中！<br>Googleマップから道順もご確認いただけます。</p>
+  <div class="cta-buttons">
+    <a href="https://www.instagram.com/" target="_blank" rel="noopener" class="cta-btn instagram">
+      📷 Instagram をフォロー
+    </a>
+    <a href="https://maps.google.com/" target="_blank" rel="noopener" class="cta-btn secondary">
+      📍 Googleマップで見る
+    </a>
+    <a href="tel:090-xxxx-xxxx" class="cta-btn primary">
+      📞 電話で問い合わせ
+    </a>
+  </div>
+</section>
+
+<!-- フッター -->
+<footer>
+  <div class="footer-logo">Cafe Stand Four Seasons</div>
+  <p style="margin-bottom:8px;">熊本県阿蘇郡産山村</p>
+  <p style="font-size:11px; margin-top:12px; opacity:0.5;">
+    Webサイト制作：<a href="https://ubuyama-digital-service.com" target="_blank" rel="noopener">うぶやまデジタルサービス（UDS）</a>
+  </p>
+</footer>
+
+</body>
+</html>
