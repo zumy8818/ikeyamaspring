@@ -1,417 +1,295 @@
 <!DOCTYPE html>
 <html lang="ja">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>カフェスタンド フォーシーズン | 阿蘇・産山村</title>
-  <meta name="description" content="阿蘇・産山村の池山水源そばにある小さなカフェスタンド。営業時間10:00〜16:00（月曜定休）。〒869-2704 熊本県阿蘇郡産山村田尻14-4">
-  <meta property="og:title" content="カフェスタンド フォーシーズン">
-  <meta property="og:description" content="池山水源のそばで、ほっとひと息。阿蘇・産山村の小さなカフェスタンド。">
-  <meta property="og:url" content="https://ikeyamaspring.jp/lp/">
-  <meta property="og:type" content="website">
-  <link rel="canonical" href="https://ikeyamaspring.jp/lp/">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700&family=Shippori+Mincho:wght@400;700&display=swap" rel="stylesheet">
-  <style>
-    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>カフェスタンド フォーシーズン｜池山水源のほとりのカフェ（熊本県産山村）</title>
+<meta name="description" content="名水百選・池山水源のすぐそば、湧き水で淹れるコーヒーのお店。テラス席ペットOK・テイクアウト可。営業10:00-16:00、月曜定休（祝日の場合は火曜）。">
+<link rel="canonical" href="https://ikeyamaspring.jp/">
+<!-- OGP（SNSでシェアされた時の表示設定） -->
+<meta property="og:type" content="website">
+<meta property="og:title" content="カフェスタンド フォーシーズン｜池山水源のほとりのカフェ">
+<meta property="og:description" content="池山水源のほとり、湧き水で淹れる一杯。テラス席ペットOK・テイクアウト可。">
+<meta property="og:url" content="https://ikeyamaspring.jp/">
+<meta property="og:locale" content="ja_JP">
+<!-- 構造化データ（Google検索に営業時間等を直接表示させる） -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "CafeOrCoffeeShop",
+  "name": "カフェスタンド フォーシーズン",
+  "description": "名水百選・池山水源のほとりにあるコーヒースタンド。湧き水で淹れるコーヒーとカフェラテ。",
+  "url": "https://ikeyamaspring.jp/",
+  "telephone": "+81-90-8959-9993",
+  "address": {
+    "@type": "PostalAddress",
+    "postalCode": "869-2704",
+    "addressRegion": "熊本県",
+    "addressLocality": "阿蘇郡産山村",
+    "streetAddress": "田尻14-4"
+  },
+  "geo": { "@type": "GeoCoordinates", "latitude": 33.0459067, "longitude": 131.1843953 },
+  "hasMap": "https://maps.google.com/?cid=14451112461565758512",
+  "openingHoursSpecification": [{
+    "@type": "OpeningHoursSpecification",
+    "dayOfWeek": ["Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],
+    "opens": "10:00", "closes": "16:00"
+  }],
+  "priceRange": "¥550-¥1,000",
+  "servesCuisine": "コーヒー",
+  "acceptsReservations": "False",
+  "currenciesAccepted": "JPY",
+  "paymentAccepted": "現金, クレジットカード, 電子マネー",
+  "amenityFeature": [
+    { "@type": "LocationFeatureSpecification", "name": "テラス席", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "ペット同伴可（テラス席）", "value": true },
+    { "@type": "LocationFeatureSpecification", "name": "テイクアウト", "value": true }
+  ]
+}
+</script>
+<!-- GA4（アクセス解析）はPhase 2で設置。CTAボタンのid（cta-directions-*）をイベント計測に使う -->
+<style>
+  :root{
+    --ink:#2f2a24;        /* 文字色（濃い茶） */
+    --bg:#faf7f1;         /* 背景（生成り） */
+    --paper:#ffffff;
+    --green:#3e6b4f;      /* 深緑（水源の森） */
+    --green-dark:#31573f;
+    --roof:#a8402e;       /* 赤い屋根の赤（アクセント） */
+    --line:#e5ddd0;
+    --muted:#7d746a;
+  }
+  *{ margin:0; padding:0; box-sizing:border-box; }
+  html{ scroll-behavior:smooth; }
+  body{
+    font-family:"Hiragino Kaku Gothic ProN","Yu Gothic","Noto Sans JP",sans-serif;
+    color:var(--ink); background:var(--bg); line-height:1.9;
+    font-size:16px; -webkit-font-smoothing:antialiased;
+  }
+  .serif{ font-family:"Hiragino Mincho ProN","Yu Mincho","Noto Serif JP",serif; }
+  .wrap{ max-width:640px; margin:0 auto; padding:0 20px; }
+  section{ padding:56px 0; }
+  h2{ font-size:22px; letter-spacing:.08em; margin-bottom:24px; text-align:center; }
+  h2 .en{ display:block; font-size:11px; letter-spacing:.3em; color:var(--green); margin-bottom:6px; font-weight:normal; }
 
-    :root {
-      --green:      #3d6b45;
-      --green-pale: #f0f5f1;
-      --brown:      #5c3d1e;
-      --beige:      #faf7f2;
-      --text:       #2a2a2a;
-      --gray:       #757575;
-      --line:       rgba(0,0,0,0.08);
-    }
+  /* 写真プレースホルダー（実写真に差し替え予定） */
+  .ph{
+    background:linear-gradient(135deg,#e8e0d0,#d5cbb8);
+    border-radius:12px; display:flex; align-items:center; justify-content:center;
+    color:#9a8f7e; font-size:13px; letter-spacing:.1em;
+  }
 
-    html { scroll-behavior: smooth; }
-    body {
-      font-family: 'Noto Sans JP', sans-serif;
-      color: var(--text);
-      background: var(--beige);
-      line-height: 1.8;
-      font-size: 15px;
-    }
-    img { display: block; width: 100%; }
-    a { color: inherit; text-decoration: none; }
+  /* ① ヒーロー */
+  .hero{ background:var(--paper); border-bottom:1px solid var(--line); padding:40px 0 48px; text-align:center; }
+  .hero .shopname{ font-size:13px; letter-spacing:.25em; color:var(--roof); margin-bottom:20px; }
+  .hero img{ margin-bottom:28px; }
+  .hero h1{ font-size:26px; line-height:1.7; letter-spacing:.06em; margin-bottom:14px; font-weight:600; }
+  .hero .sub{ font-size:14px; color:var(--muted); margin-bottom:24px; }
+  .chip{
+    display:inline-block; background:var(--bg); border:1px solid var(--line);
+    border-radius:999px; padding:6px 18px; font-size:13px; margin-bottom:20px;
+  }
+  .btn{
+    display:block; width:100%; max-width:400px; margin:0 auto;
+    background:var(--green); color:#fff; text-decoration:none;
+    padding:16px; border-radius:12px; font-size:16px; letter-spacing:.05em;
+    box-shadow:0 3px 10px rgba(62,107,79,.25); transition:background .2s;
+  }
+  .btn:hover{ background:var(--green-dark); }
 
-    /* ナビ */
-    nav {
-      position: fixed; top: 0; left: 0; width: 100%; z-index: 100;
-      background: rgba(250,247,242,0.96);
-      backdrop-filter: blur(6px);
-      border-bottom: 1px solid var(--line);
-      display: flex; align-items: center; justify-content: space-between;
-      padding: 8px 24px;
-    }
-    .nav-brand {
-      display: flex; align-items: center; gap: 10px;
-    }
-    .nav-brand img {
-      width: 52px; height: 52px;
-      object-fit: contain; display: block;
-    }
-    .nav-logo {
-      font-family: 'Shippori Mincho', serif;
-      font-size: 20px; font-weight: 700;
-      color: var(--brown); letter-spacing: 1px;
-      white-space: nowrap;
-    }
-    .nav-logo span { display: inline; }
-    .nav-tel  { font-size: 13px; font-weight: 700; color: var(--green); }
+  /* ② 水源とセット */
+  .spring p{ margin-bottom:1em; }
+  .spring .lead{ text-align:center; font-size:19px; letter-spacing:.08em; margin-bottom:20px; font-weight:600; }
+  .badge{
+    display:block; width:fit-content; margin:0 auto 24px;
+    background:#eef3ee; color:var(--green); border-radius:999px;
+    padding:5px 16px; font-size:12px; letter-spacing:.1em;
+  }
 
-    /* ヒーロー */
-    .hero {
-      position: relative;
-      height: 100svh; min-height: 520px;
-      overflow: hidden; padding-top: 52px;
-    }
-    .hero img {
-      position: absolute; inset: 0;
-      width: 100%; height: 100%; object-fit: cover;
-    }
-    .hero-overlay {
-      position: absolute; inset: 0;
-      background: linear-gradient(to bottom, rgba(0,0,0,0.05) 0%, rgba(0,0,0,0.52) 100%);
-    }
-    .hero-body {
-      position: absolute; bottom: 48px; left: 0; right: 0;
-      padding: 0 28px; color: white;
-    }
-    .hero-body p { font-size: 12px; letter-spacing: 3px; opacity: 0.8; margin-bottom: 10px; }
-    .hero-body h1 {
-      font-family: 'Shippori Mincho', serif;
-      font-size: clamp(28px, 7vw, 52px);
-      line-height: 1.3; margin-bottom: 24px;
-      text-shadow: 0 2px 12px rgba(0,0,0,0.3);
-    }
-    .hero-btn {
-      display: inline-block;
-      background: white; color: var(--brown);
-      font-size: 14px; font-weight: 700;
-      padding: 13px 30px; border-radius: 40px; letter-spacing: 1px;
-      box-shadow: 0 3px 14px rgba(0,0,0,0.2);
-    }
+  /* ③ メニュー */
+  .menu{ background:var(--paper); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+  .menu-item{
+    display:flex; gap:16px; align-items:center;
+    padding:20px 0; border-bottom:1px dashed var(--line);
+  }
+  .menu-item:last-of-type{ border-bottom:none; }
+  .menu-item .ph{ width:88px; height:88px; flex-shrink:0; font-size:11px; }
+  .menu-item .name{ font-size:17px; font-weight:600; }
+  .menu-item .price{ color:var(--roof); font-size:15px; margin-left:8px; }
+  .menu-item .desc{ font-size:13px; color:var(--muted); line-height:1.7; }
+  .menu-note{ text-align:center; font-size:13px; color:var(--muted); margin-top:16px; }
 
-    /* セクション共通 */
-    .section { padding: 72px 28px; }
-    .section-inner { max-width: 680px; margin: 0 auto; }
-    .section-label { font-size: 11px; letter-spacing: 3px; color: var(--green); text-transform: uppercase; margin-bottom: 6px; }
-    .section-title { font-family: 'Shippori Mincho', serif; font-size: clamp(22px, 4.5vw, 30px); color: var(--brown); margin-bottom: 20px; }
-    .divider { width: 36px; height: 2px; background: var(--green); margin-bottom: 32px; }
+  /* ④ 営業時間・基本情報 */
+  .info table{ width:100%; border-collapse:collapse; background:var(--paper); border-radius:12px; overflow:hidden; }
+  .info th,.info td{ padding:14px 16px; font-size:14px; border-bottom:1px solid var(--line); text-align:left; vertical-align:top; }
+  .info th{ width:34%; background:#f4efe6; font-weight:600; }
+  .info tr:last-child th,.info tr:last-child td{ border-bottom:none; }
 
-    /* ABOUT */
-    .about { background: white; }
-    .about-text { font-size: 15px; color: #444; line-height: 2; margin-bottom: 32px; }
-    .points { display: flex; flex-direction: column; gap: 12px; }
-    .point {
-      display: flex; align-items: flex-start; gap: 14px;
-      padding: 16px 18px;
-      background: var(--green-pale); border-radius: 10px;
-    }
-    .point-icon { font-size: 22px; flex-shrink: 0; margin-top: 2px; }
-    .point h3 { font-size: 14px; font-weight: 700; color: var(--green); margin-bottom: 3px; }
-    .point p  { font-size: 13px; color: var(--gray); }
+  /* ⑤ アクセス */
+  .access p{ margin-bottom:1em; }
+  .access .map{ width:100%; height:280px; border:0; border-radius:12px; margin:20px 0; }
+  .addr{ font-size:14px; color:var(--muted); }
 
-    /* 店舗情報 */
-    .info { background: var(--beige); }
-    .info-table { width: 100%; border-collapse: collapse; }
-    .info-table tr { border-bottom: 1px solid var(--line); }
-    .info-table tr:first-child { border-top: 1px solid var(--line); }
-    .info-table th {
-      text-align: left; width: 100px; padding: 15px 10px 15px 0;
-      font-size: 13px; font-weight: 700; color: var(--green); vertical-align: top;
-    }
-    .info-table td { padding: 15px 0; font-size: 14px; }
-    .info-table td a { color: var(--green); }
-    .map-wrap { margin-top: 28px; border-radius: 12px; overflow: hidden; height: 230px; }
-    .map-wrap iframe { width: 100%; height: 100%; border: 0; }
+  /* ⑥ FAQ */
+  .faq details{
+    background:var(--paper); border:1px solid var(--line); border-radius:10px;
+    margin-bottom:10px; padding:14px 18px; font-size:14px;
+  }
+  .faq summary{ cursor:pointer; font-weight:600; }
+  .faq details p{ margin-top:10px; color:var(--muted); }
 
-    /* FAQ */
-    .faq { background: white; }
-    .faq-item { border-bottom: 1px solid var(--line); }
-    .faq-item:first-child { border-top: 1px solid var(--line); }
-    .faq-q {
-      display: flex; align-items: flex-start; gap: 12px;
-      padding: 18px 0; cursor: pointer; user-select: none;
-    }
-    .badge {
-      display: inline-flex; align-items: center; justify-content: center;
-      width: 24px; height: 24px; min-width: 24px; max-width: 24px;
-      border-radius: 50%; font-size: 12px; font-weight: 700;
-      margin-top: 1px; line-height: 1;
-    }
-    .q-badge { background: var(--green); color: white; }
-    .a-badge { background: var(--beige); color: var(--brown); }
-    .faq-q-text { font-size: 14px; font-weight: 700; flex: 1; padding-top: 3px; }
-    .faq-toggle { font-size: 20px; color: var(--gray); flex-shrink: 0; transition: transform 0.25s; padding-top: 1px; }
-    .faq-item.open .faq-toggle { transform: rotate(45deg); }
-    .faq-a {
-      display: none; flex-direction: row; gap: 12px;
-      padding: 0 0 18px;
-    }
-    .faq-item.open .faq-a { display: flex; }
-    .faq-a p { font-size: 14px; color: #555; line-height: 1.8; flex: 1; }
+  /* ⑦ お店について */
+  .about{ background:var(--paper); border-top:1px solid var(--line); text-align:center; }
+  .about .ph{ height:180px; margin-bottom:24px; }
+  .about p{ font-size:15px; margin-bottom:1em; text-align:left; }
 
-    /* CTA */
-    .cta { background: var(--green); color: white; text-align: center; padding: 64px 28px; }
-    .cta .section-label { color: rgba(255,255,255,0.6); }
-    .cta .section-title { color: white; }
-    .cta p { font-size: 14px; opacity: 0.85; max-width: 480px; margin: 0 auto 36px; }
-    .cta-btns { display: flex; gap: 12px; justify-content: center; flex-wrap: wrap; }
-    .cta-btn {
-      display: inline-flex; align-items: center; gap: 8px;
-      padding: 13px 26px; border-radius: 40px;
-      font-size: 14px; font-weight: 700; transition: opacity 0.2s;
-    }
-    .cta-btn:hover { opacity: 0.85; }
-    .btn-white   { background: white; color: var(--green); }
-    .btn-outline { background: transparent; color: white; border: 1.5px solid rgba(255,255,255,0.55); }
+  /* ⑧ フッター */
+  footer{ background:var(--ink); color:#cfc8bf; text-align:center; padding:36px 20px 120px; font-size:13px; line-height:2; }
+  footer a{ color:#fff; }
 
-    /* フッター */
-    footer {
-      background: var(--brown); color: rgba(255,255,255,0.7);
-      text-align: center; padding: 36px 28px;
-      font-size: 12px; line-height: 2;
-    }
-    footer .logo { font-family: 'Shippori Mincho', serif; font-size: 18px; color: white; display: block; margin-bottom: 6px; }
+  /* 追従バー（スマホで常に道順ボタンが見える） */
+  .sticky-bar{
+    position:fixed; bottom:0; left:0; right:0; z-index:50;
+    background:rgba(255,255,255,.96); border-top:1px solid var(--line);
+    padding:10px 16px calc(10px + env(safe-area-inset-bottom));
+    display:flex; gap:12px; align-items:center; justify-content:center;
+  }
+  .sticky-bar .hours{ font-size:12px; color:var(--muted); line-height:1.5; white-space:nowrap; }
+  .sticky-bar .btn{ margin:0; padding:12px 20px; font-size:14px; width:auto; flex-shrink:0; }
 
-    @media (max-width: 600px) {
-      nav { padding: 12px 16px; }
-      .section { padding: 56px 16px; }
-      .hero-body { padding: 0 16px; bottom: 32px; }
-    }
-  </style>
+  @media (min-width:768px){
+    .hero h1{ font-size:32px; }
+    .hero .ph{ height:320px; }
+  }
+</style>
 </head>
 <body>
 
-<!-- ナビ -->
-<nav>
-  <div class="nav-brand">
-    <img src="../images/ChatGPT Image 2026.5.20.png" alt="CafeStand FourSeason ロゴ">
-    <div class="nav-logo">
-      <span>CafeStand</span>
-      <span>FourSeason</span>
-    </div>
+<!-- ① ヒーロー -->
+<header class="hero">
+  <div class="wrap">
+    <p class="shopname">CAFE STAND FOUR SEASONS</p>
+    <img src="../images/web/IMG_1685.jpg" alt="池山水源のほとりに建つカフェスタンド フォーシーズンの外観" style="width:100%;height:230px;object-fit:cover;border-radius:12px;margin-bottom:28px;" loading="eager">
+    <h1 class="serif">池山水源のほとり、<br>湧き水で淹れる一杯。</h1>
+    <p class="sub">名水百選・池山水源のすぐそば。散策のあとは、<br>水源の水で淹れたコーヒーでひと息つきませんか。</p>
+    <p class="chip">🕙 10:00–16:00｜月曜定休（祝日の場合は火曜）</p>
+    <a class="btn" id="cta-directions-top"
+       href="https://www.google.com/maps/dir/?api=1&destination=カフェスタンド フォーシーズン&destination_place_id=ChIJR1BAJQsxQTURMAzZ8DeqjMg"
+       target="_blank" rel="noopener">📍 Googleマップで道順を見る</a>
   </div>
-  <span class="nav-tel"><a href="tel:09089599993">☎ 090-8959-9993</a></span>
-</nav>
+</header>
 
-<!-- ヒーロー -->
-<div class="hero">
-  <img src="../images/2023.10.11-7.jpg" alt="池山水源 カフェスタンドフォーシーズン">
-  <div class="hero-overlay"></div>
-  <div class="hero-body">
-    <h1>池山水源で、<br>ほっとひと息。</h1>
-    <a href="#info" class="hero-btn">営業時間・アクセスを見る</a>
-  </div>
-</div>
-
-<!-- ABOUT -->
-<section class="section about" id="about">
-  <div class="section-inner">
-    <div class="section-label">About</div>
-    <h2 class="section-title">フォーシーズンについて</h2>
-    <div class="divider"></div>
-    <p class="about-text">
-      熊本県産山村、池山水源のほとりにある小さなカフェスタンドです。<br>
-      阿蘇の自然に囲まれながら、ゆっくりとした時間をお過ごしください。
-    </p>
-    <div class="points">
-      <div class="point">
-        <div class="point-icon">🌿</div>
-        <div>
-          <h3>名水百選のそばで</h3>
-          <p>日本名水百選にも選ばれた池山水源のすぐそば。澄んだ空気と緑の中でひと休みできます。</p>
-        </div>
-      </div>
-      <div class="point">
-        <div class="point-icon">☕</div>
-        <div>
-          <h3>季節ごとのドリンク</h3>
-          <p>春・夏・秋・冬、それぞれの季節に合わせたメニューをご用意しています。</p>
-        </div>
-      </div>
-      <div class="point">
-        <div class="point-icon">🅿️</div>
-        <div>
-          <h3>池山水源の駐車場が使えます</h3>
-          <p>池山水源の駐車場（約20台）をご利用いただけます。水源散策のついでにぜひお立ち寄りください。</p>
-        </div>
-      </div>
-    </div>
+<!-- ② 水源とセット -->
+<section class="spring">
+  <div class="wrap">
+    <span class="badge">環境省選定「名水百選」</span>
+    <p class="lead serif">池山水源から、すぐそこ。</p>
+    <img src="../images/web/2023.10.11-7.jpg" alt="池山水源の清らかな湧き水" style="width:100%;height:200px;object-fit:cover;border-radius:12px;margin-bottom:20px;" loading="lazy">
+    <p>環境省の「名水百選」に選ばれた池山水源。毎分30トンの清らかな水が湧き出すその水源のほとりに、この店はあります。</p>
+    <p>水源を見た帰り道、赤い屋根と「コーヒー」ののぼりが目印です。テラス席はペット同伴OK。テイクアウトして、水のせせらぎと一緒に楽しむのもおすすめです。</p>
   </div>
 </section>
 
-<!-- 店舗情報 -->
-<section class="section info" id="info">
-  <div class="section-inner">
-    <div class="section-label">Information</div>
-    <h2 class="section-title">店舗情報</h2>
-    <div class="divider"></div>
-    <table class="info-table">
-      <tr>
-        <th>店舗名</th>
-        <td>カフェスタンド フォーシーズン</td>
-      </tr>
-      <tr>
-        <th>住所</th>
-        <td>〒869-2704<br>熊本県阿蘇郡産山村田尻14-4</td>
-      </tr>
-      <tr>
-        <th>電話</th>
-        <td><a href="tel:09089599993">090-8959-9993</a></td>
-      </tr>
-      <tr>
-        <th>営業時間</th>
-        <td>10:00 〜 16:00</td>
-      </tr>
-      <tr>
-        <th>定休日</th>
-        <td>毎週月曜日</td>
-      </tr>
-      <tr>
-        <th>駐車場</th>
-        <td>池山水源の駐車場をご利用ください（約20台）</td>
-      </tr>
+<!-- ③ メニュー -->
+<section class="menu" id="menu">
+  <div class="wrap">
+    <h2 class="serif"><span class="en">MENU</span>メニュー</h2>
+    <div class="menu-item">
+      <div class="ph">写真：コーヒー</div>
+      <div>
+        <p><span class="name">コーヒー</span><span class="price">550円</span></p>
+        <p class="desc">池山水源の水で淹れる一杯</p>
+      </div>
+    </div>
+    <div class="menu-item">
+      <div class="ph">写真：カフェラテ</div>
+      <div>
+        <p><span class="name">カフェラテ</span><span class="price">650円</span></p>
+        <p class="desc">おいしい牛乳を使ったまろやかなラテ</p>
+      </div>
+    </div>
+    <p class="menu-note">どちらもテイクアウトできます。ドライブのお供にどうぞ。</p>
+  </div>
+</section>
+
+<!-- ④ 営業時間・基本情報 -->
+<section class="info" id="info">
+  <div class="wrap">
+    <h2 class="serif"><span class="en">INFORMATION</span>営業時間・基本情報</h2>
+    <table>
+      <tr><th>営業時間</th><td>10:00–16:00</td></tr>
+      <tr><th>定休日</th><td>月曜（月曜が祝日の場合は火曜）</td></tr>
+      <tr><th>冬期</th><td>1〜2月は積雪状況によりお休みする場合があります</td></tr>
+      <tr><th>ご予約</th><td>不要（予約は受け付けていません。そのままお越しください）</td></tr>
+      <tr><th>お支払い</th><td>現金・クレジットカード・電子マネー</td></tr>
+      <tr><th>お席</th><td>テラス席あり（ペット同伴OK）・お子様連れ歓迎</td></tr>
     </table>
-    <div class="map-wrap">
-      <iframe
-        src="https://maps.google.com/maps?q=33.0459067,131.1843953&z=16&output=embed"
-        allowfullscreen loading="lazy"
-        referrerpolicy="no-referrer-when-downgrade">
-      </iframe>
-    </div>
   </div>
 </section>
 
-<!-- FAQ -->
-<section class="section faq" id="faq">
-  <div class="section-inner">
-    <div class="section-label">FAQ</div>
-    <h2 class="section-title">よくあるご質問</h2>
-    <div class="divider"></div>
-    <div id="faq-list">
-
-      <div class="faq-item">
-        <div class="faq-q">
-          <span class="badge q-badge">Q</span>
-          <span class="faq-q-text">駐車場はありますか？</span>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">
-          <span class="badge a-badge">A</span>
-          <p>池山水源の駐車場（約20台）をご利用いただけます。カフェまで徒歩すぐです。</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">
-          <span class="badge q-badge">Q</span>
-          <span class="faq-q-text">予約は必要ですか？</span>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">
-          <span class="badge a-badge">A</span>
-          <p>予約不要でご来店いただけます。ただし、混雑時はお待ちいただく場合がございます。</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">
-          <span class="badge q-badge">Q</span>
-          <span class="faq-q-text">テイクアウトはできますか？</span>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">
-          <span class="badge a-badge">A</span>
-          <p>はい、全メニューテイクアウト対応しております。池山水源を散策しながらお楽しみいただけます。</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">
-          <span class="badge q-badge">Q</span>
-          <span class="faq-q-text">子どもと一緒に行けますか？</span>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">
-          <span class="badge a-badge">A</span>
-          <p>もちろんです。お子様連れのお客様も大歓迎です。池山水源の自然の中でゆっくりお過ごしください。</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">
-          <span class="badge q-badge">Q</span>
-          <span class="faq-q-text">ペットは連れて行けますか？</span>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">
-          <span class="badge a-badge">A</span>
-          <p>屋外・テラス席であればペット同伴可能です。詳細はお電話（090-8959-9993）でご確認ください。</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">
-          <span class="badge q-badge">Q</span>
-          <span class="faq-q-text">悪天候の日も営業していますか？</span>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">
-          <span class="badge a-badge">A</span>
-          <p>荒天時は臨時休業することがあります。ご来店前にお電話またはInstagramでご確認いただくことをおすすめします。</p>
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <div class="faq-q">
-          <span class="badge q-badge">Q</span>
-          <span class="faq-q-text">クレジットカードや電子マネーは使えますか？</span>
-          <span class="faq-toggle">+</span>
-        </div>
-        <div class="faq-a">
-          <span class="badge a-badge">A</span>
-          <p>各種電子決済がご利用いただけます。現金のほか、キャッシュレスでのお支払いも歓迎しております。</p>
-        </div>
-      </div>
-
-    </div>
+<!-- ⑤ アクセス・駐車場 -->
+<section class="access" id="access">
+  <div class="wrap">
+    <h2 class="serif"><span class="en">ACCESS</span>アクセス・駐車場</h2>
+    <p>池山水源のほとり。赤い屋根とコーヒーののぼりが目印です。</p>
+    <p class="addr">〒869-2704 熊本県阿蘇郡産山村田尻14-4</p>
+    <iframe class="map" loading="lazy" title="カフェスタンド フォーシーズンの地図"
+      src="https://maps.google.com/maps?q=33.0459067,131.1843953&z=16&output=embed"></iframe>
+    <p><strong>駐車場：</strong>店舗裏に5台（無料）。池山水源の駐車場もご利用いただけます。</p>
+    <a class="btn" id="cta-directions-bottom"
+       href="https://www.google.com/maps/dir/?api=1&destination=カフェスタンド フォーシーズン&destination_place_id=ChIJR1BAJQsxQTURMAzZ8DeqjMg"
+       target="_blank" rel="noopener">📍 Googleマップで道順を見る</a>
   </div>
 </section>
 
-<script>
-  document.querySelectorAll('#faq-list .faq-q').forEach(function(q) {
-    q.addEventListener('click', function() {
-      var item = this.closest('.faq-item');
-      item.classList.toggle('open');
-    });
-  });
-</script>
-
-<!-- CTA -->
-<section class="cta">
-  <div class="section-label">Access & Contact</div>
-  <h2 class="section-title">お気軽にお越しください</h2>
-  <p>産山村の自然の中で、ゆっくりとした時間をどうぞ。<br>ご不明点はお電話でお気軽にどうぞ。</p>
-  <div class="cta-btns">
-    <a href="tel:09089599993" class="cta-btn btn-white">📞 090-8959-9993</a>
-    <a href="https://maps.google.com/?q=33.0459067,131.1843953" target="_blank" rel="noopener" class="cta-btn btn-outline">📍 Googleマップで見る</a>
+<!-- ⑥ よくある質問 -->
+<section class="faq">
+  <div class="wrap">
+    <h2 class="serif"><span class="en">FAQ</span>よくある質問</h2>
+    <details>
+      <summary>予約なしでも入れますか？</summary>
+      <p>はい、予約は受け付けておりませんので、そのままお越しください。</p>
+    </details>
+    <details>
+      <summary>ペットと一緒に入れますか？</summary>
+      <p>テラス席はペット同伴OKです。リードの着用をお願いしています。</p>
+    </details>
+    <details>
+      <summary>駐車場はありますか？</summary>
+      <p>店舗裏に5台分の無料駐車場があります。池山水源の駐車場もご利用いただけます。</p>
+    </details>
+    <details>
+      <summary>テイクアウトはできますか？</summary>
+      <p>コーヒー・カフェラテはテイクアウトできます。</p>
+    </details>
   </div>
 </section>
 
-<!-- フッター -->
+<!-- ⑦ お店について -->
+<section class="about">
+  <div class="wrap">
+    <h2 class="serif"><span class="en">ABOUT</span>お店について</h2>
+    <div class="ph">写真：テラス席・店内の雰囲気</div>
+    <p>2024年、池山水源のほとりに開業しました。</p>
+    <p>産山村の美しい水と空気の中で飲むコーヒーの美味しさを、多くの人に知ってほしい——そんな想いで淹れています。</p>
+    <p>お客様との会話も、この店の楽しみのひとつです。お気軽に声をかけてください。</p>
+  </div>
+</section>
+
+<!-- ⑧ フッター -->
 <footer>
-  <span class="logo">Cafe Stand Four Seasons</span>
-  〒869-2704 熊本県阿蘇郡産山村田尻14-4<br>
-  営業時間：10:00〜16:00　定休日：毎週月曜日<br>
-  <br>
-  <span style="opacity:0.4; font-size:11px;">
-    Web制作：<a href="https://ubuyama-digital-service.com" target="_blank" rel="noopener" style="color:inherit;">うぶやまデジタルサービス（UDS）</a>
-  </span>
+  <p class="serif" style="font-size:15px; color:#fff;">カフェスタンド フォーシーズン</p>
+  <p>〒869-2704 熊本県阿蘇郡産山村田尻14-4<br>Tel <a href="tel:09089599993">090-8959-9993</a></p>
+  <p style="margin-top:12px; font-size:11px;">© Cafe Stand Four Seasons</p>
 </footer>
+
+<!-- 追従バー：営業情報と道順ボタンが常に見える（Check指標①対策） -->
+<div class="sticky-bar">
+  <p class="hours">10:00–16:00<br>月曜定休</p>
+  <a class="btn" id="cta-directions-sticky"
+     href="https://www.google.com/maps/dir/?api=1&destination=カフェスタンド フォーシーズン&destination_place_id=ChIJR1BAJQsxQTURMAzZ8DeqjMg"
+     target="_blank" rel="noopener">📍 道順を見る</a>
+</div>
 
 </body>
 </html>
